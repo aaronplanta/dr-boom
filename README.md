@@ -4,7 +4,7 @@ A 2D Bomberman-inspired arcade game made with HTML5 Canvas and vanilla JavaScrip
 
 ## Play
 
-Open `index.html` in a modern browser. The ordered `defer` scripts work directly from `file://` as well as from a static server.
+Open `index.html` in a modern browser. The ordered `defer` scripts work directly from `file://` as well as from a static server. Or visit the live site: https://aaronplanta.github.io/dr-boom/
 
 Optional local server, from this directory:
 
