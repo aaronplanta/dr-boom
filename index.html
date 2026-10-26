@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151816">
+  <meta name="description" content="A small arena. A short fuse. Play Dr. Boom, a free, entirely offline Canvas arcade game.">
+  <title>Dr. Boom — A little calculated chaos.</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <script src="js/Constants.js" defer></script>
+  <script src="js/Player.js" defer></script>
+  <script src="js/Bomb.js" defer></script>
+  <script src="js/Enemy.js" defer></script>
+  <script src="js/Explosion.js" defer></script>
+  <script src="js/Map.js" defer></script>
+  <script src="js/Game.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="wordmark" href="./index.html" aria-label="Dr. Boom home"><span class="brand-spark" aria-hidden="true">✳</span> DR. BOOM<span class="wordmark-period">®</span></a>
+      <span class="header-note">SMALL ARENA. BIG ENERGY.</span>
+      <div class="edition"><span class="status-dot"></span> THE ORIGINAL <span class="edition-number">/ 001</span></div>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div><p class="eyebrow"><span class="tiny-cross">+</span> A BROWSER ARCADE EXPERIMENT</p><h1 id="page-title">A little calculated <span>chaos.</span></h1><p class="intro-copy">Drop a bomb. Make some room. Try not to be there when it goes off.</p></div>
+        <div class="intro-stamp" aria-hidden="true"><span>EST.</span><strong>BOOM</strong><span>2026</span></div>
+      </section>
+
+      <div class="game-layout">
+        <section class="game-panel" aria-label="Game arena">
+          <div class="arena-topline"><div><span class="status-dot" id="arena-dot"></span><span id="arena-status">AWAITING PLAYER</span></div><span>SECTOR 01 <span class="muted">/ THE TRAINING GROUNDS</span></span></div>
+          <div class="hud">
+            <div class="hud-item"><span class="hud-label">SCORE</span><strong id="score">00000</strong></div>
+            <div class="hud-item"><span class="hud-label">HOSTILES</span><strong><span id="enemies">03</span><span class="hud-unit"> / 03</span></strong></div>
+            <div class="hud-item"><span class="hud-label">BOMBS READY</span><strong id="bombs">02<span class="hud-unit"> / 02</span></strong></div>
+            <div class="hud-item timer"><span class="hud-label">TIME LEFT</span><strong id="timer">03:00</strong></div>
+          </div>
+
+          <div class="arena-wrap">
+            <canvas id="game-canvas" width="600" height="520" tabindex="0" aria-label="Dr. Boom arena. Move with arrow keys or WASD, drop a bomb with Space, and pause with P or Escape." aria-describedby="how-to-play">Your browser needs HTML5 Canvas to play Dr. Boom.</canvas>
+            <div id="game-overlay" class="game-overlay">
+              <div class="overlay-card">
+                <span class="overlay-symbol" aria-hidden="true">✳</span>
+                <p class="eyebrow" id="overlay-kicker">GOOD THINGS COME WITH A SHORT FUSE</p>
+                <h2 id="overlay-title">LET’S MAKE<br>SOME ROOM.</h2>
+                <p id="overlay-description">Outsmart the hostiles. Clear the arena.<br>Keep a little distance.</p>
+                <button class="button button-primary" id="start-button"><span id="start-label">LET’S PLAY</span><span aria-hidden="true">↗</span></button>
+                <span class="overlay-hint" id="overlay-hint">or press <kbd>ENTER</kbd> to get started</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="arena-bottomline"><span><span class="blue-dot"></span> YOU’RE THE BLUE ONE.</span><div><button id="pause-button" class="text-button" disabled><span aria-hidden="true">Ⅱ</span> PAUSE <kbd>P</kbd></button><span class="control-divider"></span><button id="restart-button" class="text-button"><span aria-hidden="true">↻</span> RESTART <kbd>R</kbd></button></div></div>
+          <div class="touch-controls" aria-label="On-screen game controls">
+            <div class="d-pad"><button data-move="up" class="pad-up" aria-label="Move up">↑</button><button data-move="left" class="pad-left" aria-label="Move left">←</button><button data-move="down" class="pad-down" aria-label="Move down">↓</button><button data-move="right" class="pad-right" aria-label="Move right">→</button></div>
+            <button id="touch-bomb" class="touch-bomb"><span aria-hidden="true">●</span> DROP BOMB</button>
+          </div>
+        </section>
+
+        <aside class="field-guide" id="how-to-play">
+          <div class="guide-heading"><span class="eyebrow">BEFORE YOU BLOW THINGS UP</span><h2>The field guide<span>.</span></h2></div>
+          <section class="guide-section"><h3><span class="section-number">01</span> THE MISSION</h3><p>Three hostiles. One you. Clear them all before the clock runs out.</p><div class="mission-note"><span aria-hidden="true">↗</span> A good exit plan beats a big explosion.</div></section>
+          <section class="guide-section"><h3><span class="section-number">02</span> THE CONTROLS</h3><div class="control-row"><span>Move around</span><div class="key-cluster"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></div></div><div class="control-row sub-row"><span>or keep it classic</span><div class="key-cluster"><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd></div></div><div class="control-row bomb-control"><span>Drop a bomb</span><kbd class="space-key">SPACE</kbd></div><div class="control-row"><span>Take a breather</span><kbd>P</kbd></div></section>
+          <section class="guide-section"><h3><span class="section-number">03</span> KNOW YOUR SURROUNDINGS</h3><div class="legend-row"><span class="legend-icon legend-wall"></span><div><strong>Solid walls</strong><span>Not going anywhere.</span></div></div><div class="legend-row"><span class="legend-icon legend-crate"></span><div><strong>Breakable blocks</strong><span>Make your own shortcuts.</span></div></div><div class="legend-row"><span class="legend-icon legend-enemy"><i></i><i></i></span><div><strong>The hostiles</strong><span>Bad company. Keep clear.</span></div></div></section>
+          <div class="fuse-note"><span class="fuse-star" aria-hidden="true">✳</span><div><strong>2.4 seconds. That’s your cue.</strong><p>Fire travels two tiles in every direction. Walls stop it. So do blocks.</p></div></div>
+        </aside>
+      </div>
+      <p id="game-message" class="game-message" role="status" aria-live="polite">A fresh arena. A clean slate. What could possibly go wrong?</p>
+    </main>
+
+    <footer><span>BUILT FOR THE JOY OF BLOWING THINGS UP.</span><span>NO DOWNLOADS. JUST <span class="footer-boom">BOOM.</span></span></footer>
+  </div>
+  <noscript><div class="noscript">Enable JavaScript to play Dr. Boom.</div></noscript>
+</body>
+</html>
